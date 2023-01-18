@@ -4,14 +4,16 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../style/style.dart';
 
-class UsualVideo extends StatefulWidget {
-  UsualVideo({Key? key}) : super(key: key);
+class UsualVideo extends StatelessWidget {
+  String photo;
+  String title;
+  String avatar;
+  String views;
+  String publishedTimeText;
+  String name;
 
-  @override
-  State<UsualVideo> createState() => _UsualVideoState();
-}
+  UsualVideo({Key? key, required this.photo, required this.title, required this.avatar, required this.views, required this.publishedTimeText, required this.name}) : super(key: key);
 
-class _UsualVideoState extends State<UsualVideo> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -21,7 +23,10 @@ class _UsualVideoState extends State<UsualVideo> {
         children: [
           Container(
             height: 215,
+            width: MediaQuery.of(context).size.width,
             color: Style.darkGrey,
+           child: Image.network(photo, fit: BoxFit.cover,),
+
           ),
           Padding(
             padding:
@@ -33,11 +38,14 @@ class _UsualVideoState extends State<UsualVideo> {
                   width: 36,
                   decoration: BoxDecoration(
                       shape: BoxShape.circle, color: Style.darkGrey),
+                  child: ClipOval(
+                    child: Image.network(avatar),
+                  ),
                 ),
                 12.horizontalSpace,
                 Expanded(
                     child: Text(
-                        "The Beauty of Existence - Heart Touching Nasheed",
+                        title,
                         style: Style.textStyleNormal())),
                 12.horizontalSpace,
                 Icon(
@@ -49,7 +57,7 @@ class _UsualVideoState extends State<UsualVideo> {
           ),
           Padding(
             padding: const EdgeInsets.only(left: 60),
-            child: Text("19,210,251 viewsJul • 1, 2016",
+            child: Text("${name} • ${views} views • ${publishedTimeText}",
                 style:
                     Style.textStyleNormal(size: 12, textColor: Style.darkGrey)),
           )

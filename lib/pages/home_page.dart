@@ -50,11 +50,11 @@ class _HomePageState extends State<HomePage> {
             children: [
               TopLogo(),
               Category(),
-              UsualVideo(),
+              //UsualVideo(),
               Space(),
               ShortsVideo(),
               Space(),
-              UsualVideo(),
+             // UsualVideo(),
               Space(),
               ShortsVideo()
             ],

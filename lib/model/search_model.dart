@@ -52,11 +52,15 @@ class Content {
   ContentType? type;
   Video? video;
 
-  factory Content.fromJson(Map<String, dynamic> json) => Content(
-    channel: json["channel"] != null ? Channel.fromJson(json["channel"]) : null,
-    type: contentTypeValues.map[ json["type"]],
-    video: json["video"] != null ? Video.fromJson( json["video"]) : null,
-  );
+  factory Content.fromJson(Map<String, dynamic> json){
+    return Content(
+      channel: json["channel"] != null ? Channel.fromJson(json["channel"]) : null,
+      type: contentTypeValues.map[ json["type"]],
+      video: json["video"] != null ? Video.fromJson( json["video"]) : null,
+    );
+  }
+
+
 
   Map<String, dynamic> toJson() => {
     "channel": channel,
