@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../pages/search_page.dart';
 import '../style/style.dart';
 
 class TopLogo extends StatelessWidget {
@@ -22,7 +23,11 @@ class TopLogo extends StatelessWidget {
                   18.horizontalSpace,
                   Image.asset('assets/images/notifications.png'),
                   18.horizontalSpace,
-                  Image.asset('assets/images/search.png'),
+                  InkWell(child: Image.asset('assets/images/search.png'),
+                  onTap: (){
+                    Navigator.of(context).push(MaterialPageRoute(builder: (_)=>SearchPage()));
+                  },
+                  ),
                   18.horizontalSpace,
                   Container(
                     height: 24.h,

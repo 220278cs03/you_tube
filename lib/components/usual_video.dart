@@ -4,9 +4,14 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../style/style.dart';
 
-class UsualVideo extends StatelessWidget {
-  const UsualVideo({Key? key}) : super(key: key);
+class UsualVideo extends StatefulWidget {
+  UsualVideo({Key? key}) : super(key: key);
 
+  @override
+  State<UsualVideo> createState() => _UsualVideoState();
+}
+
+class _UsualVideoState extends State<UsualVideo> {
   @override
   Widget build(BuildContext context) {
     return Container(

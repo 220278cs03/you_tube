@@ -11,6 +11,7 @@ class Style{
   static const greyBorder = Color(0xffCECECE);
   static const darkGrey = Color(0xff6C6C6C);
   static const beta = Color(0xff9D9D9D);
+  static const greyMusic = Color(0xffC4C4C4);
 
   //black
   static const primaryBlack = Color(0xff0A0A0A);
@@ -20,7 +21,20 @@ class Style{
   //white
   static const whiteColor = Color(0xffFFFFFF);
 
+  static const redColor = Color(0xffFF0000);
+
+  static const blue = Color(0xff075FDE);
+
   // ---------------------------- TextStyle ----------------------- //
+
+  static textStyleBold({double size = 16, Color textColor = Style.whiteColor}){
+    return GoogleFonts.roboto(
+      fontSize: size,
+      color: textColor,
+      fontWeight: FontWeight.w700,
+      decoration: TextDecoration.none,
+    );
+  }
 
   static textStyleNormal({double size = 14, Color textColor = Style.primaryBlack}){
     return GoogleFonts.roboto(
