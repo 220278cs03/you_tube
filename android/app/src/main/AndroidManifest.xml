@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.you_tube">
    <application
-        android:label="you_tube"
+        android:label="YouTube"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

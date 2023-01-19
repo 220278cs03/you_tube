@@ -27,7 +27,7 @@ class UsualVideo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(bottom: 20),
+      padding: const EdgeInsets.only(bottom: 20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -43,8 +43,8 @@ class UsualVideo extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Container(
-                  margin: EdgeInsets.all(10),
-                  padding: EdgeInsets.all(4),
+                  margin: const EdgeInsets.all(10),
+                  padding: const EdgeInsets.all(4),
                   decoration: BoxDecoration(
                       color: Style.blackColor.withOpacity(0.64),
                       borderRadius: BorderRadius.circular(2)),
@@ -54,7 +54,7 @@ class UsualVideo extends StatelessWidget {
                         size: 10, textColor: Style.whiteColor),
                   ),
                 ),
-                SizedBox.shrink()
+                const SizedBox.shrink()
               ],
             ),
           ),
@@ -66,7 +66,7 @@ class UsualVideo extends StatelessWidget {
                 Container(
                   height: 36,
                   width: 36,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                       shape: BoxShape.circle, color: Style.darkGrey),
                   child: ClipOval(
                     child: Image.network(avatar),
@@ -75,7 +75,7 @@ class UsualVideo extends StatelessWidget {
                 12.horizontalSpace,
                 Expanded(child: Text(title, style: Style.textStyleNormal())),
                 12.horizontalSpace,
-                Icon(
+                const Icon(
                   Icons.more_vert,
                   color: Style.primaryBlack,
                 )

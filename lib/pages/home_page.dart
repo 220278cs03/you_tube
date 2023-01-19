@@ -23,7 +23,7 @@ class HomePage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              TopLogo(),
+              const TopLogo(),
               Category(),
               VideoStatic(
                 photo: FakeModel.photo[0],
@@ -32,9 +32,9 @@ class HomePage extends StatelessWidget {
                 view: FakeModel.view[0],
                 duration: FakeModel.duration[0],
               ),
-              Space(),
+              const Space(),
               ShortsVideo(),
-              Space(),
+              const Space(),
               VideoStatic(
                   photo: FakeModel.photo[1],
                   avatar: FakeModel.avatar[1],
@@ -53,9 +53,9 @@ class HomePage extends StatelessWidget {
                   title: FakeModel.title[3],
                   view: FakeModel.view[3],
                   duration: FakeModel.duration[3]),
-              Space(),
+              const Space(),
               ShortsVideo(),
-              Space(),
+              const Space(),
               VideoStatic(
                   photo: FakeModel.photo[4],
                   avatar: FakeModel.avatar[4],

@@ -23,7 +23,7 @@ class RecentWatched extends StatelessWidget {
           height: 160,
           child: ListView.builder(
               itemCount: 5,
-              padding: EdgeInsets.only(left: 12),
+              padding: const EdgeInsets.only(left: 12),
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
                 return Column(
@@ -31,7 +31,7 @@ class RecentWatched extends StatelessWidget {
                     Container(
                       height: 88,
                       width: 148,
-                      margin: EdgeInsets.only(right: 12),
+                      margin: const EdgeInsets.only(right: 12),
                       decoration: BoxDecoration(
                           color: Style.darkGrey,
                           image: DecorationImage(
@@ -44,13 +44,13 @@ class RecentWatched extends StatelessWidget {
                           Container(
                             height: 14,
                             width: 28,
-                            margin: EdgeInsets.all(10),
+                            margin: const EdgeInsets.all(10),
                             decoration: BoxDecoration(
                                 color: Style.blackColor.withOpacity(0.64),
                                 borderRadius: BorderRadius.circular(2)),
                             child: Center(
                                 child: Text(
-                                  FakeModel.duration[index],
+                              FakeModel.duration[index],
                               style: Style.textStyleThin(
                                   size: 10, textColor: Style.whiteColor),
                             )),

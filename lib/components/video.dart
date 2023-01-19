@@ -9,12 +9,20 @@ class VideoStatic extends StatelessWidget {
   String title;
   String view;
   String duration;
-  VideoStatic({Key? key, required this.photo, required this.avatar, required this.title, required this.view, required this.duration}) : super(key: key);
+
+  VideoStatic(
+      {Key? key,
+      required this.photo,
+      required this.avatar,
+      required this.title,
+      required this.view,
+      required this.duration})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(bottom: 20),
+      padding: const EdgeInsets.only(bottom: 20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -22,7 +30,8 @@ class VideoStatic extends StatelessWidget {
             height: 215,
             width: MediaQuery.of(context).size.width,
             decoration: BoxDecoration(
-              image: DecorationImage(image: NetworkImage(photo), fit: BoxFit.cover),
+              image: DecorationImage(
+                  image: NetworkImage(photo), fit: BoxFit.cover),
               color: Style.darkGrey,
             ),
             child: Column(
@@ -32,18 +41,18 @@ class VideoStatic extends StatelessWidget {
                 Container(
                   height: 20,
                   width: 34,
-                  margin: EdgeInsets.all(10),
+                  margin: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
                       color: Style.blackColor.withOpacity(0.64),
                       borderRadius: BorderRadius.circular(2)),
                   child: Center(
                       child: Text(
-                        duration,
-                        style: Style.textStyleThin(
-                            size: 10, textColor: Style.whiteColor),
-                      )),
+                    duration,
+                    style: Style.textStyleThin(
+                        size: 10, textColor: Style.whiteColor),
+                  )),
                 ),
-                SizedBox.shrink()
+                const SizedBox.shrink()
               ],
             ),
           ),
@@ -55,14 +64,18 @@ class VideoStatic extends StatelessWidget {
                 Container(
                   height: 36,
                   width: 36,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                       shape: BoxShape.circle, color: Style.darkGrey),
-                  child: ClipOval(child: Image.network(avatar, fit: BoxFit.cover,)),
+                  child: ClipOval(
+                      child: Image.network(
+                    avatar,
+                    fit: BoxFit.cover,
+                  )),
                 ),
                 12.horizontalSpace,
                 Expanded(child: Text(title, style: Style.textStyleNormal())),
                 12.horizontalSpace,
-                Icon(
+                const Icon(
                   Icons.more_vert,
                   color: Style.primaryBlack,
                 )

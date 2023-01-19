@@ -30,8 +30,8 @@ class TopLogo extends StatelessWidget {
                   IconButton(
                       splashRadius: 20,
                       onPressed: () {
-                        Navigator.of(context).push(
-                            MaterialPageRoute(builder: (_) => const SearchPage()));
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (_) => const SearchPage()));
                       },
                       icon: Image.asset('assets/images/search.png')),
                   Container(

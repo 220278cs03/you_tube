@@ -7,8 +7,9 @@ abstract class SearchRepository {
 
   static Future<SearchRepositor?> getSearch({required String name}) async {
     try {
-      final url = Uri.parse('https://youtube138.p.rapidapi.com/search/?q=$name&hl=en&gl=US');
-      final res = await http.get(url,headers: {
+      final url = Uri.parse(
+          'https://youtube138.p.rapidapi.com/search/?q=$name&hl=en&gl=US');
+      final res = await http.get(url, headers: {
         'X-RapidAPI-Key': '668ec5f1b0msh32ae4a0abc77259p19ab46jsnea0ced6cf2fd',
         'X-RapidAPI-Host': 'youtube138.p.rapidapi.com'
       });

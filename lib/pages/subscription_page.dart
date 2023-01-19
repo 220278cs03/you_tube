@@ -26,9 +26,9 @@ class _SubscriptionPageState extends State<SubscriptionPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              TopLogo(),
+              const TopLogo(),
               8.verticalSpace,
-              FollowedChannels(),
+              const FollowedChannels(),
               CategoryWithoutExplore(),
               VideoStatic(
                   photo: FakeModel.photo[0],

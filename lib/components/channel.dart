@@ -9,7 +9,14 @@ class ChannelInfo extends StatelessWidget {
   String title;
   String username;
   String subscribersText;
-  ChannelInfo({Key? key, required this.avatar, required this.title, required this.username, required this.subscribersText}) : super(key: key);
+
+  ChannelInfo(
+      {Key? key,
+      required this.avatar,
+      required this.title,
+      required this.username,
+      required this.subscribersText})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,9 +30,9 @@ class ChannelInfo extends StatelessWidget {
               Container(
                 height: 70,
                 width: 70,
-                decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Style.darkGrey,
+                decoration: const BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Style.darkGrey,
                 ),
                 child: ClipOval(child: Image.network(avatar)),
               ),
@@ -33,26 +40,41 @@ class ChannelInfo extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(title, style: Style.textStyleThin(size: 18, textColor: Style.blackColor),),
+                  Text(
+                    title,
+                    style: Style.textStyleThin(
+                        size: 18, textColor: Style.blackColor),
+                  ),
                   4.verticalSpace,
-                  Text(username, style: Style.textStyleThin(size: 14, textColor: Style.darkGrey),),
+                  Text(
+                    username,
+                    style: Style.textStyleThin(
+                        size: 14, textColor: Style.darkGrey),
+                  ),
                   4.verticalSpace,
-                  Text(subscribersText, style: Style.textStyleThin(size: 14, textColor: Style.darkGrey),),
+                  Text(
+                    subscribersText,
+                    style: Style.textStyleThin(
+                        size: 14, textColor: Style.darkGrey),
+                  ),
                   4.verticalSpace,
                   Container(
-                    padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(50),
-                        color: Style.primaryBlack
+                        color: Style.primaryBlack),
+                    child: Text(
+                      "Subscribe",
+                      style: Style.textStyleNormal(textColor: Style.whiteColor),
                     ),
-                    child: Text("Subscribe", style: Style.textStyleNormal(textColor: Style.whiteColor),),
                   )
                 ],
               )
             ],
           ),
         ),
-        Space(),
+        const Space(),
         12.verticalSpace
       ],
     );
