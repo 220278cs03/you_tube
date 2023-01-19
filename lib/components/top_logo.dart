@@ -12,37 +12,45 @@ class TopLogo extends StatelessWidget {
     return Column(
       children: [
         Padding(
-          padding: const EdgeInsets.all(12.0),
+          padding: const EdgeInsets.symmetric(horizontal: 12.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Image.asset('assets/images/youtube_logo.png'),
               Row(
                 children: [
-                  Image.asset('assets/images/wifi.png'),
-                  18.horizontalSpace,
-                  Image.asset('assets/images/notifications.png'),
-                  18.horizontalSpace,
-                  InkWell(child: Image.asset('assets/images/search.png'),
-                  onTap: (){
-                    Navigator.of(context).push(MaterialPageRoute(builder: (_)=>SearchPage()));
-                  },
-                  ),
-                  18.horizontalSpace,
+                  IconButton(
+                      splashRadius: 20,
+                      onPressed: () {},
+                      icon: Image.asset('assets/images/wifi.png')),
+                  IconButton(
+                      splashRadius: 20,
+                      onPressed: () {},
+                      icon: Image.asset('assets/images/notifications.png')),
+                  IconButton(
+                      splashRadius: 20,
+                      onPressed: () {
+                        Navigator.of(context).push(
+                            MaterialPageRoute(builder: (_) => const SearchPage()));
+                      },
+                      icon: Image.asset('assets/images/search.png')),
                   Container(
                     height: 24.h,
                     width: 24.w,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                         shape: BoxShape.circle, color: Style.darkGrey),
+                    child: Image.asset(
+                      'assets/images/avatar_photo.png',
+                      fit: BoxFit.cover,
+                    ),
                   )
                 ],
               )
             ],
           ),
         ),
-        2.verticalSpace,
-        Padding(
-          padding: const EdgeInsets.only(top: 2, left: 12, right: 12),
+        const Padding(
+          padding: EdgeInsets.only(left: 12, right: 12),
           child: Divider(
             color: Style.greyBorder,
           ),

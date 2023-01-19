@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../model/fake_model.dart';
 import '../style/style.dart';
 
 class ShortsVideo extends StatelessWidget {
-  const ShortsVideo({Key? key}) : super(key: key);
+  ShortsVideo({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -35,13 +36,18 @@ class ShortsVideo extends StatelessWidget {
               height: 250,
               child: ListView.builder(
                   scrollDirection: Axis.horizontal,
-                  itemCount: 10,
+                  itemCount: 5,
                   itemBuilder: (context, index) {
                     return Container(
                       height: 250,
                       width: 150,
-                      color: Style.darkGrey,
                       margin: EdgeInsets.only(right: 12),
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: NetworkImage(FakeModel.photo[index]),
+                            fit: BoxFit.cover),
+                        color: Style.darkGrey,
+                      ),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -50,7 +56,7 @@ class ShortsVideo extends StatelessWidget {
                                 horizontal: 18, vertical: 16),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
+                              children: const [
                                 SizedBox.shrink(),
                                 Icon(
                                   Icons.more_vert,
@@ -66,7 +72,7 @@ class ShortsVideo extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  "DIY Toys | Satisfying And Relaxing | DIY Tiktok Compilation...",
+                                  FakeModel.title[index],
                                   style: Style.textStyleNormal(
                                       size: 12, textColor: Style.whiteColor),
                                   overflow: TextOverflow.ellipsis,
@@ -74,7 +80,7 @@ class ShortsVideo extends StatelessWidget {
                                 ),
                                 8.verticalSpace,
                                 Text(
-                                  "24M views",
+                                  FakeModel.view[index],
                                   style: Style.textStyleNormal(
                                       size: 10, textColor: Style.whiteColor),
                                   overflow: TextOverflow.ellipsis,

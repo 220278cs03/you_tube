@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:you_tube/components/usual_video.dart';
-import 'package:you_tube/pages/search_history.dart';
 
 import '../components/category_without_explore.dart';
 import '../components/channel.dart';
@@ -27,7 +26,6 @@ class _SearchPageState extends State<SearchPage> {
   SearchRepositor? data;
   final _delayed = Delayed(milliseconds: 700);
   List<String> listOfSearch = [];
-
 
   getSearchHistory() async {
     listOfSearch = await LocalStore.getSearch();
@@ -64,28 +62,28 @@ class _SearchPageState extends State<SearchPage> {
                     child: TextFormField(
                       controller: textEditingController,
                       decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(50),
-                              borderSide: BorderSide.none),
-                          fillColor: Style.primaryGrey,
-                          filled: true,
-                          hintText: "Search YouTube",
-                          hintStyle: Style.textStyleThin(
-                              size: 18, textColor: Style.darkGrey),
-                          contentPadding:
-                              EdgeInsets.symmetric(horizontal: 24, vertical: 4),
-                          suffixIcon: textEditingController.text.isEmpty
-                              ? SizedBox.shrink()
-                              : InkWell(
-                                  child: Icon(
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(50),
+                            borderSide: BorderSide.none),
+                        fillColor: Style.primaryGrey,
+                        filled: true,
+                        hintText: "Search YouTube",
+                        hintStyle: Style.textStyleThin(
+                            size: 18, textColor: Style.darkGrey),
+                        contentPadding:
+                            EdgeInsets.symmetric(horizontal: 24, vertical: 4),
+                        suffixIcon: textEditingController.text.isEmpty
+                            ? SizedBox.shrink()
+                            : InkWell(
+                                child: Icon(
                                   Icons.close,
                                   color: Style.darkGrey,
                                 ),
-                            onTap: (){
-                                    textEditingController.text = "";
-                                    setState(() {});
-                            },
-                          ),
+                                onTap: () {
+                                  textEditingController.text = "";
+                                  setState(() {});
+                                },
+                              ),
                       ),
                       onChanged: (e) {
                         data?.contents?.clear();
@@ -101,95 +99,99 @@ class _SearchPageState extends State<SearchPage> {
                     ),
                   ),
                   8.horizontalSpace,
-                  InkWell(
-                    child: Container(
-                      height: 45,
-                      width: 35,
-                      decoration: BoxDecoration(
-                          color: Style.primaryGrey,
-                          borderRadius: BorderRadius.circular(50)),
-                      child: Center(
-                        child: Icon(
-                          Icons.keyboard_voice,
-                          color: Style.darkGrey,
-                        ),
+                  Container(
+                    height: 45,
+                    width: 35,
+                    decoration: BoxDecoration(
+                        color: Style.primaryGrey,
+                        borderRadius: BorderRadius.circular(50)),
+                    child: Center(
+                      child: Icon(
+                        Icons.keyboard_voice,
+                        color: Style.darkGrey,
                       ),
                     ),
-                    onTap: (){
-                      Navigator.of(context).push(MaterialPageRoute(builder: (_)=>SearchHistory(list: listOfSearch)));
-                    },
                   )
                 ],
               ),
             ),
-        textEditingController.text.isEmpty ? Expanded(
-            child: ListView.builder(
-              itemCount: listOfSearch.length,
-                itemBuilder: (context, index){
-              return InkWell(
-                child: Container(
-                  margin: EdgeInsets.symmetric(horizontal: 12,vertical: 20),
-                    child: Row(
-                  children: [
-                    Image.asset('assets/images/history_icon.png'),
-                    18.horizontalSpace,
-                    Text(listOfSearch[index]),
-                    Spacer(),
-                    Icon(Icons.open_in_full, color: Style.blackColor,)
-                  ],
-                )),
-                onLongPress: (){
-                  LocalStore.removeSearch(listOfSearch[index]);
-                  setState(() {
-
-                  });
-                },
-              );
-            })
-        )
-           : data?.contents?.isEmpty ?? true
-                ? CircularProgressIndicator()
-                : Expanded(
+            12.verticalSpace,
+            textEditingController.text.isEmpty
+                ? Expanded(
                     child: ListView.builder(
-                        itemCount: data?.contents?.length,
+                        itemCount: listOfSearch.length,
                         itemBuilder: (context, index) {
-                          return data?.contents?[index]?.type ==
-                                  ContentType.CHANNEL
-                              ? ChannelInfo(
-                                  avatar: data?.contents?[index]?.channel
-                                          ?.avatar?[0]?.url ??
-                                      "",
-                                  title:
-                                      data?.contents?[index]?.channel?.title ??
+                          return InkWell(
+                            child: Container(
+                                margin: EdgeInsets.symmetric(
+                                    horizontal: 12, vertical: 20),
+                                child: Row(
+                                  children: [
+                                    Image.asset(
+                                        'assets/images/history_icon.png'),
+                                    18.horizontalSpace,
+                                    Text(listOfSearch[index]),
+                                    Spacer(),
+                                    Icon(
+                                      Icons.open_in_full,
+                                      color: Style.blackColor,
+                                    )
+                                  ],
+                                )),
+                            onLongPress: () {
+                              LocalStore.removeSearch(listOfSearch[index]);
+                              setState(() {});
+                            },
+                          );
+                        }))
+                : data?.contents?.isEmpty ?? true
+                    ? Center(child: CircularProgressIndicator())
+                    : Expanded(
+                        child: ListView.builder(
+                            itemCount: data?.contents?.length,
+                            itemBuilder: (context, index) {
+                              return data?.contents?[index]?.type ==
+                                      ContentType.CHANNEL
+                                  ? ChannelInfo(
+                                      avatar: data?.contents?[index]?.channel
+                                              ?.avatar?[0]?.url ??
                                           "",
-                                  username: data?.contents?[index]?.channel
-                                          ?.username ??
-                                      "",
-                                  subscribersText: data?.contents?[index]
-                                          ?.channel?.stats?.subscribersText ??
-                                      "",
-                                )
-                              : UsualVideo(
-                                  photo: data?.contents?[index]?.video
-                                          ?.thumbnails?[0]?.url ??
-                                      "",
-                                  title: data?.contents?[index]?.video?.title ??
-                                      "",
-                                  avatar: data?.contents?[index]?.video?.author
-                                          ?.avatar?[0]?.url ??
-                                      '',
-                                  views: data?.contents?[index]?.video?.stats
-                                          ?.views
-                                          .toString() ??
-                                      "",
-                                  publishedTimeText: data?.contents?[index]
-                                          ?.video?.publishedTimeText ??
-                                      "",
-                                  name: data?.contents?[index]?.video?.author
-                                          ?.title ??
-                                      "",
-                                );
-                        })),
+                                      title: data?.contents?[index]?.channel
+                                              ?.title ??
+                                          "",
+                                      username: data?.contents?[index]?.channel
+                                              ?.username ??
+                                          "",
+                                      subscribersText: data
+                                              ?.contents?[index]
+                                              ?.channel
+                                              ?.stats
+                                              ?.subscribersText ??
+                                          "",
+                                    )
+                                  : UsualVideo(
+                                      photo: data?.contents?[index]?.video
+                                              ?.thumbnails?[0]?.url ??
+                                          "",
+                                      title: data?.contents?[index]?.video
+                                              ?.title ??
+                                          "",
+                                      avatar: data?.contents?[index]?.video
+                                              ?.author?.avatar?[0]?.url ??
+                                          '',
+                                      views: data?.contents?[index]?.video
+                                              ?.stats?.views
+                                              .toString() ??
+                                          "",
+                                      publishedTimeText: data?.contents?[index]
+                                              ?.video?.publishedTimeText ??
+                                          "",
+                                      name: data?.contents?[index]?.video
+                                              ?.author?.title ??
+                                          "",
+                                      duration: data?.contents?[index]?.video?.lengthSeconds.toString() ?? "",
+                                    );
+                            })),
           ],
         ),
       ),
